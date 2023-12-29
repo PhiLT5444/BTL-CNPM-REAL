@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.KhoanThuControllers.ThuTienController">
+   <children>
+      <VBox prefHeight="622.0" prefWidth="222.0" style="-fx-background-color: #8585ad;">
+         <children>
+            <VBox alignment="CENTER" prefHeight="143.0" prefWidth="222.0" style="-fx-background-color: black;">
+               <children>
+                  <ImageView fx:id="homeButton" fitHeight="63.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/image/home-svgrepo-com%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Khoản thu" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" prefHeight="480.0" prefWidth="222.0" spacing="50.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="74.0" prefWidth="222.0" style="-fx-background-color: #8585ad;">
+                     <children>
+                        <HBox fx:id="quanLyButton" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #e0e0eb;">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/image/household-family-inhabitants-tenants-svgrepo-com%20(3).png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="58.0" prefWidth="140.0" text="Quản lý" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" prefHeight="74.0" prefWidth="222.0" style="-fx-background-color: #8585ad;">
+                     <children>
+                        <HBox fx:id="thuTienButton" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #73726f;">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/image/people-svgrepo-com.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="58.0" prefWidth="140.0" text="Thu tiền" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="260.0" prefHeight="74.0" prefWidth="222.0" style="-fx-background-color: #8585ad;">
+                     <children>
+                        <HBox fx:id="thongKeButton" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #e0e0eb;">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/image/statistic-analytics-ui-basic-graph-app-svgrepo-com.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="58.0" prefWidth="140.0" text="Thống kê">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="338.0" prefHeight="74.0" prefWidth="222.0" style="-fx-background-color: #8585ad;">
+                     <children>
+                        <HBox fx:id="phuongTienButton" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #e0e0eb;">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/image/car-svgrepo-com.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="58.0" prefWidth="147.0" text="Phương tiện">
+                                 <font>
+                                    <Font name="System Bold" size="23.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="344.0" layoutY="14.0" prefHeight="214.0" prefWidth="439.0" style="-fx-border-color: #8585ad;">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="653.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Khoản thu:" wrappingWidth="95.73675155639648">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton fx:id="ktMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Chọn" />
+                  <TextField fx:id="khoanThutext" prefHeight="26.0" prefWidth="255.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="11.0" prefHeight="48.0" prefWidth="653.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Người nộp:" wrappingWidth="95.73675155639648">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton fx:id="nguoiNopMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Chọn" />
+                  <TextField fx:id="nguoiNopText" prefHeight="26.0" prefWidth="255.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="59.0" prefHeight="48.0" prefWidth="653.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Số tiền thu:" wrappingWidth="95.73675155639648">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="soTienThutext" prefHeight="26.0" prefWidth="79.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Ngày thu: " wrappingWidth="82.92250061035156">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <DatePicker fx:id="dateText" prefHeight="26.0" prefWidth="171.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="653.0">
+               <children>
+                  <Button fx:id="themButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="175.0" text="Thêm thu tiền" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="thuTienTable" layoutX="237.0" layoutY="279.0" prefHeight="329.0" prefWidth="654.0">
+        <columns>
+          <TableColumn fx:id="maKhoanThuCol" prefWidth="127.19999694824219" text="Mã khoản thu" />
+          <TableColumn fx:id="tenKhoanThuCol" prefWidth="128.0" text="Tên khoản thu" />
+            <TableColumn fx:id="tenNguoiNopCol" prefWidth="128.0" text="Tên người nộp" />
+            <TableColumn fx:id="soTienThuCol" prefWidth="137.59991455078125" text="Số tiền thu" />
+            <TableColumn fx:id="ngayThuCol" prefWidth="132.0001220703125" text="Ngày Thu" />
+            <TableColumn fx:id="tinhNangCol" prefWidth="132.0001220703125" text="Tính năng" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

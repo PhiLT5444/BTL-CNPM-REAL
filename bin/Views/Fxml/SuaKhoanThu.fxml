@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.KhoanThuControllers.SuaKhoanThuController">
+   <children>
+      <VBox layoutX="22.0" layoutY="63.0" prefHeight="208.0" prefWidth="310.0" style="-fx-border-color: #8585ad;">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Mã khoản thu: " wrappingWidth="94.87579345703125" />
+                  <TextField fx:id="maKhoanThuText" editable="false" prefHeight="26.0" prefWidth="206.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="11.0" prefHeight="62.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Tên khoản thu:" wrappingWidth="94.87579345703125" />
+                  <TextField fx:id="tenKhoanThuText" prefHeight="26.0" prefWidth="206.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="73.0" prefHeight="62.0" prefWidth="309.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Số tiền nộp:" wrappingWidth="94.87579345703125" />
+                  <TextField fx:id="soTienNopText" prefHeight="26.0" prefWidth="206.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text layoutX="85.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sửa khoản thu">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="suaButton" layoutX="117.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Sửa" />
+      <Button fx:id="huyButton" layoutX="188.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Hủy" />
+   </children>
+</AnchorPane>

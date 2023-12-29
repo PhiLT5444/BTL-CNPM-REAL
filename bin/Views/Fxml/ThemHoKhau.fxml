@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HoKhauControllers.ThemHoKhauController">
+   <children>
+      <VBox layoutX="68.0" layoutY="48.0" prefHeight="213.0" prefWidth="426.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu: " wrappingWidth="131.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="maHoKhauText" prefHeight="26.0" prefWidth="334.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khu vực:" wrappingWidth="131.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="maKhuVucText" prefHeight="26.0" prefWidth="334.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="44.0" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ:" wrappingWidth="131.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="diaChiText" prefHeight="26.0" prefWidth="334.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="79.0" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chủ hộ:" wrappingWidth="67.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <MenuButton fx:id="chonMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Chọn" />
+                  <TextField fx:id="chuHoText" prefHeight="26.0" prefWidth="294.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="113.0" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh chủ hộ:" wrappingWidth="131.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="ngaySinhChuHoText" prefHeight="26.0" prefWidth="334.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="148.0" prefHeight="34.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMND/CCCD:" wrappingWidth="131.73675918579102">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="soCMNDText" prefHeight="26.0" prefWidth="334.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="47.0" layoutY="310.0" prefHeight="258.0" prefWidth="493.0" spacing="10.0" style="-fx-border-color: #9c9994;">
+         <children>
+            <Button fx:id="suaButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Sửa" />
+            <TableView fx:id="tableView" prefHeight="220.0" prefWidth="476.0">
+              <columns>
+                <TableColumn fx:id="hoVaTenCol" prefWidth="124.00006181001663" text="Họ và tên" />
+                <TableColumn fx:id="ngaySinhCol" prefWidth="143.99993896484375" text="Ngày sinh" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <Label layoutX="233.0" layoutY="283.0" prefHeight="18.0" prefWidth="107.0" text="Thành viên của hộ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="huyButton" layoutX="204.0" layoutY="578.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Hủy" />
+      <Button fx:id="luuButton" layoutX="304.0" layoutY="578.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Lưu" />
+      <Label layoutX="172.0" prefHeight="35.0" prefWidth="218.0" text="Thêm mới Hộ khẩu">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
