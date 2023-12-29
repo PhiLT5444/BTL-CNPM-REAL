@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="620.0" style="-fx-border-color: #7d7b7a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HoKhauControllers.HoKhauItemController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="94.0" style="-fx-border-color: #7d7b7a; -fx-border-width: 0 1 0 1;">
+         <children>
+            <Text fx:id="idText" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" textAlignment="CENTER" wrappingWidth="91.60739994049072" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text fx:id="maHoKhauText" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="11.0" prefHeight="42.0" prefWidth="147.0" style="-fx-border-color: #7d7b7a; -fx-border-width: 0 1 0 1;">
+         <children>
+            <Text fx:id="hoVaTenChuHoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên chủ hộ" textAlignment="CENTER" wrappingWidth="144.82220840454102" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="264.0" layoutY="11.0" prefHeight="42.0" prefWidth="126.0" style="-fx-border-color: #7d7b7a; -fx-border-width: 0 1 0 1;">
+         <children>
+            <Text fx:id="diaChiText" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" textAlignment="CENTER" wrappingWidth="175.9691162109375" />
+         </children>
+      </HBox>
+   </children>
+</HBox>
