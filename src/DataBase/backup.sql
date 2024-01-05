@@ -38,7 +38,7 @@ CREATE TABLE `chuho` (
 
 LOCK TABLES `chuho` WRITE;
 /*!40000 ALTER TABLE `chuho` DISABLE KEYS */;
-INSERT INTO `chuho` VALUES (9,'AAA'),(2,'HG1');
+INSERT INTO `chuho` VALUES (2,'1'),(4,'2'),(4,'3');
 /*!40000 ALTER TABLE `chuho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `hokhau` (
 
 LOCK TABLES `hokhau` WRITE;
 /*!40000 ALTER TABLE `hokhau` DISABLE KEYS */;
-INSERT INTO `hokhau` VALUES ('AAA','29','Khương Đình, Hà Nội'),('HG1','36','Thanh Hóa');
+INSERT INTO `hokhau` VALUES ('1','1','1'),('2','2','2'),('3','3','3');
 /*!40000 ALTER TABLE `hokhau` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `nhankhau` (
 
 LOCK TABLES `nhankhau` WRITE;
 /*!40000 ALTER TABLE `nhankhau` DISABLE KEYS */;
-INSERT INTO `nhankhau` VALUES (1,'a',NULL,'a','a','a','a','a','a',1,'a','a','a','a'),(2,'Nguyen Van A','2000-01-01','Hanoi','Kinh','123456789','Hanoi','Dai Hoc','Sinh Vien',1,'Phat Giao','Vietnam','Hanoi','Company A'),(3,'Tran Thi B','1995-05-15','Hue','Kinh','987654321','Hue','Cao Dang','Giao Vien',0,'Cong Giao','Vietnam','Hue','School B'),(4,'Le Van C','1988-12-30','Danang','Kinh','456789012','Danang','Trung Cap','Ky Thuat Vien',1,'Tin Lanh','Vietnam','Danang','Factory C'),(5,'Pham Thi D','1999-06-20','Quang Ninh','Kinh','567890123','Quang Ninh','Dai Hoc','Sinh Vien',0,'Hoi Giao','Vietnam','Quang Ninh','University D'),(6,'Hoang Van E','1992-03-05','Can Tho','Kinh','345678901','Can Tho','Cao Dang','Y Ta',1,'Tin Lanh','Vietnam','Can Tho','Hospital E'),(7,'Lê Hồng Luân',NULL,'Thanh Hóa','Kinh','11212121212','Hà Nội','12/12','Sinh Viên',1,'Không','Việt Nam','Hà Nội','Trường đại học Thủy Lợi Hà Nội'),(8,'Cao Minh Đức','2023-11-27','Hoằng Giang','Kinh','13123131','Hà Nội','6/12','Học sinh',1,'Không','Việt Nam','Hà Nội','Trường tiểu học Tây Mỗ'),(9,'Lê Tuấn Phi','2003-01-15','Hoằng Giang, Hoằng Hóa, Thanh Hóa','Kinh','038203011837','Thành phố Hà Nội','Tốt nghiệp 12/12','Cử nhân Công nghệ thông tin',1,'không','Việt Nam','Thành phố Hà Nội','Hà Nội');
+INSERT INTO `nhankhau` VALUES (2,'Nguyen Van A','2000-01-01','Hanoi','Kinh','123456789','Hanoi','Dai Hoc','Sinh Vien',1,'Phat Giao','Vietnam','Hanoi','Company A'),(3,'Tran Thi B','1995-05-15','Hue','Kinh','987654321','Hue','Cao Dang','Giao Vien',0,'Cong Giao','Vietnam','Hue','School B'),(4,'Le Van C','1988-12-30','Danang','Kinh','456789012','Danang','Trung Cap','Ky Thuat Vien',1,'Tin Lanh','Vietnam','Danang','Factory C'),(5,'Pham Thi D','1999-06-20','Quang Ninh','Kinh','567890123','Quang Ninh','Dai Hoc','Sinh Vien',0,'Hoi Giao','Vietnam','Quang Ninh','University D'),(6,'Hoang Van E','1992-03-05','Can Tho','Kinh','345678901','Can Tho','Cao Dang','Y Ta',1,'Tin Lanh','Vietnam','Can Tho','Hospital E'),(8,'Cao Minh Đức','2023-11-27','Hoằng Giang','Kinh','13123131','Hà Nội','6/12','Học sinh',1,'Không','Việt Nam','Hà Nội','Trường tiểu học Tây Mỗ'),(9,'Lê Tuấn Phi','2003-01-15','Hoằng Giang, Hoằng Hóa, Thanh Hóa','Kinh','038203011837','Thành phố Hà Nội','Tốt nghiệp 12/12','Cử nhân Công nghệ thông tin',1,'không','Việt Nam','Thành phố Hà Nội','Hà Nội');
 /*!40000 ALTER TABLE `nhankhau` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `phuongtien` (
 
 LOCK TABLES `phuongtien` WRITE;
 /*!40000 ALTER TABLE `phuongtien` DISABLE KEYS */;
-INSERT INTO `phuongtien` VALUES ('0001','Honda',7,'Ô tô'),('0004','HuynDai',5,'Ô tô'),('0005','Mercedes S600',8,'Ô tô'),('36B8-67141','Honda Airblade',9,'Xe máy');
+INSERT INTO `phuongtien` VALUES ('0004','HuynDai',5,'Ô tô'),('0005','Mercedes S600',8,'Ô tô'),('36B8-67141','Honda Airblade',9,'Xe máy');
 /*!40000 ALTER TABLE `phuongtien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,8 +180,31 @@ CREATE TABLE `quanhe` (
 
 LOCK TABLES `quanhe` WRITE;
 /*!40000 ALTER TABLE `quanhe` DISABLE KEYS */;
-INSERT INTO `quanhe` VALUES ('HG1',3,'Quan hệ với chủ hộ'),('HG1',4,'Quan hệ với chủ hộ'),('HG1',5,'Quan hệ với chủ hộ');
 /*!40000 ALTER TABLE `quanhe` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `taikhoan`
+--
+
+DROP TABLE IF EXISTS `taikhoan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `taikhoan` (
+  `tenTaiKhoan` varchar(30) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `matKhau` varchar(30) COLLATE utf8mb3_unicode_ci NOT NULL,
+  PRIMARY KEY (`tenTaiKhoan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `taikhoan`
+--
+
+LOCK TABLES `taikhoan` WRITE;
+/*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
+INSERT INTO `taikhoan` VALUES ('Dat09','Dat09'),('PhiLT','admin');
+/*!40000 ALTER TABLE `taikhoan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -222,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-28 17:51:59
+-- Dump completed on 2023-12-29 15:56:13

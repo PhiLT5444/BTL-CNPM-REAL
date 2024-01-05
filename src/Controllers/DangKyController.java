@@ -3,6 +3,7 @@ package Controllers;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class DangKyController implements Initializable{
@@ -23,7 +25,7 @@ public class DangKyController implements Initializable{
     private Button dangKiButton;
 
     @FXML
-    private TextField matKhauText;
+    private PasswordField matKhauText;
 
     @FXML
     private TextField taiKhoanText;
@@ -32,24 +34,43 @@ public class DangKyController implements Initializable{
     private Hyperlink quayLaiHL;
     
     public void DangKy() {
-    	String query = "Insert into taiKhoan (tenTaiKhoan, matKhau) values (?,?)";
-    	Connection connection = DBConnect.getConnection();
-    	try {
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, taiKhoanText.getText());
-			preparedStatement.setString(2, matKhauText.getText());		
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  	
-    	Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Thông báo");
-        alert.setHeaderText(null);
-        alert.setContentText("Bạn đã đăng kí thành công!");
+        String checkQuery = "SELECT * FROM taiKhoan WHERE tenTaiKhoan = ?";
+        String insertQuery = "INSERT INTO taiKhoan (tenTaiKhoan, matKhau) VALUES (?, ?)";
+        
+        Connection connection = DBConnect.getConnection();
+        try {
+            // Kiểm tra xem tên đăng nhập đã tồn tại chưa
+            PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+            checkStatement.setString(1, taiKhoanText.getText());
+            ResultSet resultSet = checkStatement.executeQuery();
 
+            if (resultSet.next()) {
+                // Nếu tên đăng nhập đã tồn tại, hiển thị thông báo lỗi
+                showAlert(AlertType.ERROR, "Lỗi", null, "Tên đăng nhập đã tồn tại!");
+            } else {
+                // Nếu tên đăng nhập chưa tồn tại, thêm tài khoản mới
+                PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+                insertStatement.setString(1, taiKhoanText.getText());
+                insertStatement.setString(2, matKhauText.getText());
+                insertStatement.executeUpdate();
+
+                // Hiển thị thông báo thành công
+                showAlert(AlertType.INFORMATION, "Thông báo", null, "Bạn đã đăng kí thành công!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Phương thức để hiển thị Alert
+    private void showAlert(AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
         alert.showAndWait();
     }
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
