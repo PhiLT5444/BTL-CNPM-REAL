@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,7 +28,7 @@ public class DangNhapController implements Initializable {
     private Button dangKiButton;
 
     @FXML
-    private TextField matKhauText;
+    private PasswordField matKhauText;
 
     @FXML
     private TextField taiKhoanText;
