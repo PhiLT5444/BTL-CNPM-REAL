@@ -77,6 +77,11 @@ public class ViewFactory {
         createStage(loader);
     }
     
+    public void showSuaHoKhau() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/SuaHoKhau.fxml"));
+        createStage(loader);
+    }
+    
     public void createStage(FXMLLoader loader) {
         Scene scene = null;
         try {

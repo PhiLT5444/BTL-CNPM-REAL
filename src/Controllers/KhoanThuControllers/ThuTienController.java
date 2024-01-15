@@ -16,6 +16,7 @@ import com.mysql.cj.xdevapi.DbDoc;
 
 import DataBase.DBConnect;
 import Models.Model;
+import Models.NhanKhau;
 import Models.PhuongTien;
 import Models.QuanHe;
 import Models.ThuTien;
@@ -189,7 +190,18 @@ public class ThuTienController implements Initializable {
     		            // Lấy thông tin từ hàng hiện tại
     		            ThuTien thuTien = getTableView().getItems().get(getIndex());
     		            // Thực hiện hành động xóa ở đây
-    		            // Ví dụ: Xóa thông tin của thuTien
+    		            String query = "delete from ThuTien where maKhoanThu = ? and IdNguoiNop = ?";
+    		            Connection connection = DBConnect.getConnection();
+    		            try {
+    		            	ThuTien rowData = getTableView().getItems().get(getIndex());
+							PreparedStatement preparedStatement = connection.prepareStatement(query);
+							preparedStatement.setString(1, rowData.getMaKhoanThu());
+							preparedStatement.setInt(2, rowData.getIdNguoiNop());
+							preparedStatement.executeUpdate();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
     		            System.out.println("Đã nhấn nút Xóa cho ID: " + thuTien.getIdNguoiNop());
     		        });
 

@@ -133,10 +133,33 @@ public class KhoanThuThongKeController implements Initializable{
     	});
     }
 
+    public void setData() {
+    	String query = "Select * from ThuTien";
+    	Connection connection = DBConnect.getConnection();
+    	try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			int count = 0;
+			double tien = 0;
+			while(resultSet.next()) {
+				count ++;
+				tien += resultSet.getDouble("soTienThu");
+			}
+			Integer t = count;
+			Double t1 = tien;
+			tongSoPhieuNopText.setText(t.toString());
+			tongSoTienText.setText(t1.toString());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
 	    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		setData();
 		hienThiButton.setOnAction(e->{
 			loadData();
 		});
