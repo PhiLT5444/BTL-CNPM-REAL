@@ -18,6 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableCell;
@@ -138,22 +140,56 @@ public class QuanLyNhanKhauController implements Initializable{
     	diaChiHienTaiCol.setCellValueFactory(new PropertyValueFactory<>("diaChiHienTai"));
     	tinhNangCol.setCellFactory(column -> new TableCell<NhanKhau, String>() {
     	    private final Button deleteButton = new Button("Xóa");
+    	    private final Button editButton = new Button("Xem"); // New button for Edit
 
     	    {
+    	        // Delete Button Action
     	        deleteButton.setOnAction(event -> {
     	            NhanKhau selectedNhanKhau = getTableView().getItems().get(getIndex());
     	            System.out.println("Đã xóa dữ liệu của: " + selectedNhanKhau.getId());
     	            String delQuery = "delete from nhankhau where id = " + selectedNhanKhau.getId();
     	            Connection connection = DBConnect.getConnection();
     	            try {
-						PreparedStatement preparedStatement = connection.prepareStatement(delQuery);
-						preparedStatement.execute();
-						refresh();
-					} catch (SQLException e) {
+    	                PreparedStatement preparedStatement = connection.prepareStatement(delQuery);
+    	                preparedStatement.execute();
+    	                refresh();
+    	            } catch (SQLException e) {
+    	                e.printStackTrace();
+    	            }
+    	        });
+
+    	        // Edit Button Action (You need to implement the editing logic)
+    	        editButton.setOnAction(event -> {
+    	            NhanKhau selectedNhanKhau = getTableView().getItems().get(getIndex());
+    	            System.out.println("Đang sửa dữ liệu của: " + selectedNhanKhau.getId());
+    	            FXMLLoader loader = new FXMLLoader();
+    	            loader.setLocation(getClass().getResource("/Views/Fxml/SuaNhanKhau.fxml"));
+    	            try {
+						Parent root = loader.load();
+						SuaNhanKhauController controller = loader.getController();
+						String editQuery = "Select * from NhanKhau Where id = " + selectedNhanKhau.getId();
+						Connection connection = DBConnect.getConnection();
+						try {
+							PreparedStatement preparedStatement = connection.prepareStatement(editQuery);
+							ResultSet resultSet = preparedStatement.executeQuery();
+							while(resultSet.next()){
+								controller.setData(resultSet.getString("hoVaTen"), resultSet.getString("ngaySinh"), resultSet.getString("nguyenQuan"), resultSet.getString("danToc"), resultSet.getString("soCMND"), 
+												   resultSet.getString("noiThuongTru"), resultSet.getString("TrinhDoHocVan"), resultSet.getString("ngheNghiep"), 
+										   resultSet.getBoolean("gioiTinh"), resultSet.getString("tonGiao"), resultSet.getString("quocTich"), resultSet.getString("diaChiHienTai"), resultSet.getString("noiLamViec"));
+							}
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}				
+						
+						Stage stage = new Stage();
+						stage.setScene(new Scene(root));
+						stage.show();
+					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-    	            
+    	            // Implement your editing logic here
     	        });
     	    }
 
@@ -163,10 +199,12 @@ public class QuanLyNhanKhauController implements Initializable{
     	        if (empty) {
     	            setGraphic(null);
     	        } else {
-    	            setGraphic(deleteButton);
+    	            // Add both buttons to the cell
+    	            setGraphic(new HBox(deleteButton, editButton));
     	        }
     	    }
     	});
+
 
 
     	
