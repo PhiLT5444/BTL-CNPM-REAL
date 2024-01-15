@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8585ad; -fx-border-color: red;" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin hộ khẩu">
+               <font>
+                  <Font name="System Bold" size="44.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="522.0" prefWidth="457.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="458.0" style="-fx-background-color: green;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách thành viên">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <TableView fx:id="nhanKhauTable" prefHeight="457.0" prefWidth="456.0">
+              <columns>
+                <TableColumn fx:id="maNhanKhauCol" prefWidth="99.99996489286423" text="Mã nhân khẩu" />
+                <TableColumn fx:id="hoVaTenCol" prefWidth="116.80005645751953" text="Họ và tên" />
+                  <TableColumn fx:id="cccdCol" prefWidth="116.80005645751953" text="CMND/CCCD" />
+                  <TableColumn fx:id="quanHeCol" prefWidth="116.80005645751953" text="Quan hệ với chủ hộ" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="522.0" prefWidth="448.0" style="-fx-border-color: red;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="448.0" style="-fx-background-color: blue;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách các phương tiện">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <TableView fx:id="phuongTienCol" prefHeight="458.0" prefWidth="446.0">
+              <columns>
+                <TableColumn fx:id="bienSoXeCol" prefWidth="119.19991606473923" text="Biển số xe" />
+                <TableColumn fx:id="chuSoHuuCol" prefWidth="169.5999984741211" text="Chủ sở hữu" />
+                  <TableColumn fx:id="loaiXeCol" prefWidth="155.2000732421875" text="Loại xe" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

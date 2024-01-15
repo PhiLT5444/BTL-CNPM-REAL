@@ -20,6 +20,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -141,15 +143,29 @@ public class QLHoKhauController implements Initializable {
     	});
     	diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
     	tinhNangCol.setCellFactory(param -> new TableCell<>(){
-    		private final Button editButton = new Button("Sửa");
+    		private final Button editButton = new Button("Sửa/Xem");
     	    private final Button deleteButton = new Button("Xóa");
     	    
     	    {
     	        // Edit Button Action
     	        editButton.setOnAction(event -> {
-    	            HoKhau rowData = getTableView().getItems().get(getIndex());
-    	            // Implement edit action here using rowData
-    	            // For example: editItem(rowData);
+    	        	HoKhau rowData = getTableView().getItems().get(getIndex());
+    	        	FXMLLoader loader = new FXMLLoader();
+    	        	loader.setLocation(getClass().getResource("/Views/Fxml/SuaHoKhau.fxml"));
+    	        	try {
+    	        	    Parent root = loader.load();
+    	        	    SuaHoKhauController controller = loader.getController();
+    	        	    controller.setData(rowData.getMaHoKhau());
+    	        	    controller.loadThanhVienTable();
+    	        	    Scene scene = new Scene(root);
+    	        	    Stage stage = new Stage();
+    	        	    stage.setScene(scene);
+    	        	    stage.show();
+    	        	    Stage stage1 = (Stage)themMoiButton.getScene().getWindow();
+    	    	        Model.getInstance().getViewFactory().closeStage(stage1);
+    	        	} catch (IOException e) {
+    	        	    e.printStackTrace();
+    	        	}
     	        });
 
     	        // Delete Button Action
@@ -203,7 +219,7 @@ public class QLHoKhauController implements Initializable {
     	        if (empty) {
     	            setGraphic(null);
     	        } else {
-    	            HBox buttons = new HBox(deleteButton);
+    	            HBox buttons = new HBox(deleteButton, editButton);
     	            buttons.setAlignment(Pos.CENTER);
     	            buttons.setSpacing(5);
     	            setGraphic(buttons);

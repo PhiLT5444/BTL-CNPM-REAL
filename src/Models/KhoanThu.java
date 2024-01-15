@@ -4,6 +4,7 @@ public class KhoanThu {
 	private String maKhoanThu;
 	private String tenKhoanThu;
 	private Double soTien;
+	private Boolean loaiKhoanThu;
 	
 	public KhoanThu() {
 		
@@ -32,5 +33,13 @@ public class KhoanThu {
 	}
 	public void setSoTien(Double soTien) {
 		this.soTien = soTien;
+	}
+
+	public Boolean getLoaiKhoanThu() {
+		return loaiKhoanThu;
+	}
+
+	public void setLoaiKhoanThu(Boolean loaiKhoanThu) {
+		this.loaiKhoanThu = loaiKhoanThu;
 	}
 }

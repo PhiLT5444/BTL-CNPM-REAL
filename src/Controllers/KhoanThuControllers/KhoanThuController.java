@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import DataBase.DBConnect;
 import Models.KhoanThu;
 import Models.Model;
+import Models.NhanKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,6 +77,18 @@ public class KhoanThuController implements Initializable{
     @FXML
     private ImageView homeButton;
     
+    @FXML 
+    private MenuButton loaiKhoanThuMenu;
+    
+    @FXML
+    private MenuItem batBuocChoice;
+    
+    @FXML 
+    private MenuItem tuNguyenChoice;
+    
+    @FXML
+    private TableColumn<KhoanThu, Boolean> loaiKhoanThuCol;
+    
     ObservableList<KhoanThu> khoanThuList = FXCollections.observableArrayList();
     
     public void loadData() {
@@ -90,6 +103,7 @@ public class KhoanThuController implements Initializable{
 				khoanThu.setMaKhoanThu(resultSet.getString("maKhoanThu"));
 				khoanThu.setTenKhoanThu(resultSet.getString("tenKhoanThu"));
 				khoanThu.setSoTien(resultSet.getDouble("soTien"));
+				khoanThu.setLoaiKhoanThu(resultSet.getBoolean("loaiKhoanThu"));
 				khoanThuList.add(khoanThu);			
 			}
 		} catch (SQLException e) {
@@ -100,6 +114,19 @@ public class KhoanThuController implements Initializable{
     	maKhoanThuCol.setCellValueFactory(new PropertyValueFactory<>("maKhoanThu"));
     	tenKhoanThuCol.setCellValueFactory(new PropertyValueFactory<>("tenKhoanThu"));
     	soTienPhaiNopCol.setCellValueFactory(new PropertyValueFactory<>("soTien"));
+    	loaiKhoanThuCol.setCellValueFactory(new PropertyValueFactory<>("loaiKhoanThu"));
+    	loaiKhoanThuCol.setCellFactory(column -> new TableCell<KhoanThu, Boolean>() {
+    	    @Override
+    	    protected void updateItem(Boolean item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        
+    	        if (empty || item == null) {
+    	            setText(null);
+    	        } else {
+    	            setText(item ? "Bắt buộc" : "Tự nguyện");
+    	        }
+    	    }
+    	});
     	chucNangCol.setCellFactory(param -> new TableCell<>(){
     		private final Button editButton = new Button("Sửa");
     	    private final Button deleteButton = new Button("Xóa");
@@ -164,14 +191,29 @@ public class KhoanThuController implements Initializable{
     	});
     }
     
+    
+    boolean check = true;
+    public void setAction() {
+    	batBuocChoice.setOnAction(e->{
+    		loaiKhoanThuMenu.setText(batBuocChoice.getText());
+    		check = true;
+    	});
+    	tuNguyenChoice.setOnAction(e->{
+    		loaiKhoanThuMenu.setText(tuNguyenChoice.getText());
+    		check = false;
+    	});
+    }
+    
     public void ThemKhoanThu() {
-    	String query = "Insert into KhoanThu (maKhoanThu, tenKhoanThu, soTien) values(?,?,?)";
+    	String query = "Insert into KhoanThu (maKhoanThu, tenKhoanThu, soTien, loaiKhoanThu) values(?,?,?,?)";
     	Connection connection = DBConnect.getConnection();
     	try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, maKhoanThuText.getText());
 			preparedStatement.setString(2, tenKhoanThuText.getText());
 			preparedStatement.setDouble(3, Double.parseDouble(soTienNoptext.getText()));
+			
+			preparedStatement.setBoolean(4, check);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -184,6 +226,7 @@ public class KhoanThuController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		loadData();
+		setAction();
 		
 		homeButton.setOnMouseClicked(e->{
 			Stage stage = (Stage)themKhoanThuButton.getScene().getWindow();

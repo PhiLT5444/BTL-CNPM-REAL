@@ -95,7 +95,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="huyButton" layoutX="204.0" layoutY="578.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Hủy" />
+      <Button fx:id="huyButton" layoutX="204.0" layoutY="578.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Trở về" />
       <Button fx:id="luuButton" layoutX="304.0" layoutY="578.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Lưu" />
       <Label layoutX="172.0" prefHeight="35.0" prefWidth="218.0" text="Thêm mới Hộ khẩu">
          <font>

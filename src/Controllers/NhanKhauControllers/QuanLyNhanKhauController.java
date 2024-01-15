@@ -1,5 +1,7 @@
 package Controllers.NhanKhauControllers;
 
+import java.awt.Menu;
+import java.awt.MenuItem;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;

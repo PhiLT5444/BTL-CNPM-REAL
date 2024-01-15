@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -111,10 +113,11 @@
       </VBox>
       <TableView fx:id="khoanThuTable" layoutX="237.0" layoutY="211.0" prefHeight="400.0" prefWidth="654.0">
         <columns>
-          <TableColumn fx:id="maKhoanThuCol" prefWidth="101.59996032714844" text="Mã khoản thu" />
-          <TableColumn fx:id="tenKhoanThuCol" prefWidth="152.800048828125" text="Tên khoản thu" />
-            <TableColumn fx:id="soTienPhaiNopCol" prefWidth="152.800048828125" text="Số tiền phải nộp" />
-            <TableColumn fx:id="chucNangCol" prefWidth="244.79996337890623" text="Chức năng" />
+          <TableColumn fx:id="maKhoanThuCol" prefWidth="161.6000213623047" text="Mã khoản thu" />
+          <TableColumn fx:id="tenKhoanThuCol" prefWidth="178.39996337890625" text="Tên khoản thu" />
+            <TableColumn fx:id="soTienPhaiNopCol" prefWidth="158.4000244140625" text="Số tiền phải nộp" />
+            <TableColumn fx:id="loaiKhoanThuCol" minWidth="0.0" prefWidth="116.7999267578125" text="Loại khoản thu" />
+            <TableColumn fx:id="chucNangCol" prefWidth="132.0" text="Chức năng" />
         </columns>
       </TableView>
       <VBox layoutX="237.0" layoutY="14.0" prefHeight="169.0" prefWidth="654.0" style="-fx-border-color: #8585ad;">
@@ -147,6 +150,21 @@
                      </font>
                   </Text>
                   <TextField fx:id="soTienNoptext" prefHeight="26.0" prefWidth="237.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="11.0" layoutY="94.0" prefHeight="42.0" prefWidth="576.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loại khoản thu:" wrappingWidth="120.53674387931824">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <MenuButton fx:id="loaiKhoanThuMenu" mnemonicParsing="false" prefHeight="26.0" prefWidth="238.0" text="Loại Khoản thu">
+                    <items>
+                      <MenuItem fx:id="batBuocChoice" mnemonicParsing="false" text="Bắt buộc" />
+                      <MenuItem fx:id="tuNguyenChoice" mnemonicParsing="false" text="Tự nguyện" />
+                    </items>
+                  </MenuButton>
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="42.0" prefWidth="576.0" spacing="5.0">

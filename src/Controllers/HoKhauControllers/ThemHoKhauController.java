@@ -22,6 +22,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -110,34 +112,49 @@ public class ThemHoKhauController implements Initializable{
     }
     
     public void ThemHoKhau() {
-    	String query = "Insert into hoKhau (ma_ho_khau, ma_khu_vuc, dia_chi) values(?,?,?)";
-    	String chuHoQuery = "Insert into chuHo (idChuHo, maHoKhau) values(?,?)";
-    	String quanHeQuery = "Insert into QuanHe(maHoKhau, maNhanKhau, quanHe) values(?,?,?)";
-    	Connection connection = DBConnect.getConnection();
-    	try {
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, maHoKhauText.getText());
-			preparedStatement.setString(2, maKhuVucText.getText());
-			preparedStatement.setString(3, diaChiText.getText());
-			preparedStatement.executeUpdate();
-			
-			preparedStatement = connection.prepareStatement(chuHoQuery);
-			preparedStatement.setInt(1, id);
-			preparedStatement.setString(2, maHoKhauText.getText());
-			preparedStatement.executeUpdate();
-			
-			preparedStatement = connection.prepareStatement(quanHeQuery);
-			for(int i = 0; i < thanhVienId.size(); i++) {
-				preparedStatement.setInt(2, thanhVienId.get(i));
-				preparedStatement.setString(3, quanHe.get(i));
-				preparedStatement.setString(1, maHoKhauText.getText());
-				preparedStatement.executeUpdate();
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+        if (maHoKhauText.getText().isEmpty() || maKhuVucText.getText().isEmpty() ||
+            diaChiText.getText().isEmpty() || chuHoText.getText().isEmpty() ||
+            ngaySinhChuHoText.getText().isEmpty() || soCMNDText.getText().isEmpty()) {
+
+            // Display an alert for the user to fill in all the fields
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Hãy nhập đầy đủ thông tin!");
+            alert.showAndWait();
+        } else {
+            // All fields are filled, proceed with inserting data
+            String query = "Insert into hoKhau (ma_ho_khau, ma_khu_vuc, dia_chi) values(?,?,?)";
+            String chuHoQuery = "Insert into chuHo (idChuHo, maHoKhau) values(?,?)";
+            String quanHeQuery = "Insert into QuanHe(maHoKhau, maNhanKhau, quanHe) values(?,?,?)";
+            Connection connection = DBConnect.getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, maHoKhauText.getText());
+                preparedStatement.setString(2, maKhuVucText.getText());
+                preparedStatement.setString(3, diaChiText.getText());
+                preparedStatement.executeUpdate();
+
+                preparedStatement = connection.prepareStatement(chuHoQuery);
+                preparedStatement.setInt(1, id);
+                preparedStatement.setString(2, maHoKhauText.getText());
+                preparedStatement.executeUpdate();
+
+                preparedStatement = connection.prepareStatement(quanHeQuery);
+                for (int i = 0; i < thanhVienId.size(); i++) {
+                    preparedStatement.setInt(2, thanhVienId.get(i));
+                    preparedStatement.setString(3, quanHe.get(i));
+                    preparedStatement.setString(1, maHoKhauText.getText());
+                    preparedStatement.executeUpdate();
+                }
+                System.out.println("Data inserted successfully!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle the SQLException
+            }
+        }
     }
+
     
     
     //bảng thành viên để thêm vào nhân khẩu
@@ -165,7 +182,7 @@ public class ThemHoKhauController implements Initializable{
             ngaySinhCol.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
 
             // Thêm cột themButtonCol vào bảng và thiết lập nút "Thêm" cho từng hàng
-            TableColumn<NhanKhau, String> addButtonCol = new TableColumn<>("Thêm");
+            TableColumn<NhanKhau, String> addButtonCol = new TableColumn<>("Hành động");
             TableColumn<NhanKhau, TextField> QuanHeText = new TableColumn<>("Quan hệ với chủ hộ");
             QuanHeText.setCellFactory(param -> new TableCell<>() {
             	private final TextField quanHeText = new TextField();
@@ -180,8 +197,7 @@ public class ThemHoKhauController implements Initializable{
             });
             
             addButtonCol.setCellFactory(param -> new TableCell<>() {
-                private final Button addButton = new Button("Thêm");
-                	
+                private Button addButton = new Button("Thêm");
                 {
                     addButton.setOnAction(event -> {
                         Object rowData = getTableView().getItems().get(getIndex());
